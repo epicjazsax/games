@@ -3,6 +3,7 @@ from pretty_list import pretty_list as pretty
 
 
 def get_selection(prompt, options):
+    """loop asking for input until user response is within given options"""
     while True:
         response = input(f'{prompt} [{pretty(options, True)}]: ')
         if response in options:
@@ -12,6 +13,7 @@ def get_selection(prompt, options):
 
 
 def resolve(player_guess, computer_guess):
+    """resolve winner of rock, paper, scissors battle"""
     play_options = ['rock', 'paper', 'scissors']
     message = ['you win!', 'computer wins :(', 'tie. no one wins']
     if player_guess and computer_guess in play_options:
@@ -20,6 +22,7 @@ def resolve(player_guess, computer_guess):
 
 
 def rock_paper_scissors():
+    """play rock, paper, scissors on repeat until user doesn't want to continue"""
     while True:
         play_options = ['rock', 'paper', 'scissors']
         computer_guess = play_options[randint(0, 2)]
@@ -35,3 +38,4 @@ def rock_paper_scissors():
 
 if __name__ == '__main__':
     rock_paper_scissors()
+    
