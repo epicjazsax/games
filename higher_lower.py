@@ -2,6 +2,7 @@ import random
 
 def prompt_for_guess():
     target = random.randrange(1, 101)
+    number_of_guesses = 0
     def validate_integer_in_range(user_input_string):
         try:
             user_integer = int(user_input_string)
@@ -20,11 +21,14 @@ def prompt_for_guess():
         else:
             guess = int(user_input)
             if guess > target:
+                number_of_guesses += 1
                 print('Lower!')
             elif guess < target:
+                number_of_guesses += 1
                 print('Higher!')
             elif guess == target:
-                print(f'Congratulations! The correct answer was {guess}.')
+                number_of_guesses += 1
+                print(f'Congratulations, the correct answer was {guess}! It took you {number_of_guesses} guesses.')
 
                 def play_again_prompt():
                     return input('Play again? Y/N: ')
