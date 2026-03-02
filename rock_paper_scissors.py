@@ -1,19 +1,17 @@
 from random import randint
-from pretty_list import pretty_list as pretty
 
+PLAY_OPTIONS = ['rock', 'paper', 'scissors']
 
-def get_selection(prompt, options):
-    """loop asking for input until user response is within given options"""
+def get_selection():
     while True:
-        response = input(f'{prompt} [{pretty(options, True)}]: ')
-        if response in options:
+        response = input('Choose rock, paper, or scissors: ')
+        if response in PLAY_OPTIONS:
             return response
         else:
             print('not a valid response')
 
 
 def resolve(player_guess, computer_guess):
-    """resolve winner of rock, paper, scissors battle"""
     play_options = ['rock', 'paper', 'scissors']
     message = ['you win!', 'computer wins :(', 'tie. no one wins']
     if player_guess and computer_guess in play_options:
@@ -22,15 +20,13 @@ def resolve(player_guess, computer_guess):
 
 
 def rock_paper_scissors():
-    """play rock, paper, scissors on repeat until user doesn't want to continue"""
     while True:
-        play_options = ['rock', 'paper', 'scissors']
-        computer_guess = play_options[randint(0, 2)]
-        player_guess = get_selection('make your selection!', play_options)
+        computer_guess = PLAY_OPTIONS[randint(0, 2)]
+        player_guess = get_selection()
         print(f'computer chose {computer_guess}')
         resolution = resolve(player_guess, computer_guess)
         print(resolution)
-        play_again = get_selection('do you want to continue?', ['yes', 'no'])
+        play_again = input('do you want to continue? yes or no: ')
         if play_again == 'no':
             print('have a nice day <3')
             break
